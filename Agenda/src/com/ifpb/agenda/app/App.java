@@ -25,15 +25,18 @@ public class App {
         //usuario
         UsuarioDao user = new UsuarioDao();
         
-        user.create(new Usuario("Ana","02/02/1990", 'F', "123@gmail.com", "123"));
-        user.create(new Usuario("Thiago","03/03/1991", 'M', "thigoyure@gmail.com", "pera"));
+        user.create(new Usuario("Ana", "02/02/1990", 'F', "123@gmail.com", "123"));
+        user.create(new Usuario("Thiago", "03/03/1991", 'M', "thigoyure@gmail.com", "pera"));
         
         System.out.println(user.read("thigoyure@gmail.com"));
         System.out.println(user.listar());
-        user.delete(new Usuario ("Thiago","03/03/1991", 'M', "thigoyure@gmail.com", "pera"));
+        user.delete(new Usuario ("Thiago", "03/03/1991", 'M', "thigoyure@gmail.com", "pera"));
         System.out.println(user.listar());
         
-        user.update(new Usuario("Rafael","04/04/1992", 'M', "123@gmail.com", "123"));
+        user.update(new Usuario("Rafael", "04/04/1992", 'M', "123@gmail.com", "123"));
+        System.out.println(user.listar());
+        
+        user.create(new Usuario("Lolita", "30/02/1997", 'M', "trololo@gmail.com", "589"));
         System.out.println(user.listar());
         
         //agendas

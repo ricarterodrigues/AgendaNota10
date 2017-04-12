@@ -13,7 +13,7 @@ import java.util.Date;
 public class ConverteData {
 
     /**
-     * Método de conversão (Date -> LocalDate)
+     * Método de conversão (Date - LocalDate)
      * @param d A data (no formato Date) que será convertida
      * @return A data no formato LocalDate
      */
