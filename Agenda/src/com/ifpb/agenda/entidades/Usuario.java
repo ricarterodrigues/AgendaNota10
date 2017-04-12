@@ -240,7 +240,7 @@ public class Usuario implements Dao<Agenda>{
     public List<Compromisso> listarProximosDias(){
         List<Compromisso> lista = new ArrayList<>();
         LocalDate dataFinal = LocalDate.now();
-        dataFinal = dataFinal.withDayOfMonth(LocalDate.now().getDayOfMonth()+5);
+        dataFinal = dataFinal.withDayOfMonth(LocalDate.now().getDayOfMonth()+30);
         for(int i=0;i<agendas.size();i++){
             for(int j=0;j<agendas.get(i).listar().size();j++){
                 if((agendas.get(i).listar().get(j).getData().isEqual(LocalDate.now())||agendas.get(i).listar().get(j).getData().isAfter(LocalDate.now()))&&(agendas.get(i).listar().get(j).getData().isEqual(dataFinal)||agendas.get(i).listar().get(j).getData().isBefore(dataFinal))){
