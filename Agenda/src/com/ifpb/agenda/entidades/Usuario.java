@@ -40,15 +40,15 @@ public class Usuario implements Dao<Agenda>{
             if(LocalDate.now().isAfter(ConverteData.toLocalDate(dataNasc))){
                 this.nascimento = ConverteData.toLocalDate(formater.parse(nascimento));
             }else{
-             System.out.println("Data Inválida");
+                System.out.println("Data Inválida");
             }
+            this.sexo = sexo;
+            this.email = email;
+            this.senha = senha;
+            agendas = new ArrayList<>();
         } catch (ParseException ex) {
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }
-        this.sexo = sexo;
-        this.email = email;
-        this.senha = senha;
-        agendas = new ArrayList<>();
     }
 
     public String getNome() {
@@ -74,7 +74,7 @@ public class Usuario implements Dao<Agenda>{
              System.out.println("Data Inválida");
             }
         } catch (ParseException ex) {
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }
     }
 

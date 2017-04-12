@@ -36,12 +36,12 @@ public class Compromisso {
             }else{
                 System.out.println("Data Inválida");
             }
+            this.hora = hora;
+            this.descricao = descricao;
+            this.local = local;
         } catch (ParseException ex) {
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }
-        this.hora = hora;
-        this.descricao = descricao;
-        this.local = local;
     }
 
     public LocalDate getData() {
@@ -59,7 +59,7 @@ public class Compromisso {
                 System.out.println("Data Inválida");
             }
         } catch (ParseException ex) {
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }
     }
 

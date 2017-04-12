@@ -78,6 +78,11 @@ public class Agenda implements CompromissoDao{
                 return false;
             }
         }
+        
+        if(c.getData()==null){
+            return false;
+        }
+        
         return compromissos.add(c);
     }
 
@@ -100,6 +105,10 @@ public class Agenda implements CompromissoDao{
     public boolean update(Compromisso c) {
         for(int i=0; i<compromissos.size(); i++){
             if(compromissos.get(i).getData().equals(c.getData())&&(compromissos.get(i).getHora().equals(c.getHora()))){
+                if(c.getData()==null){
+                    return false;
+                }
+                
                 compromissos.set(i, c);
                 return true;
             }

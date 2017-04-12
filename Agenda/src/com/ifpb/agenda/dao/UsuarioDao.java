@@ -31,6 +31,11 @@ public class UsuarioDao implements Dao<Usuario>, Validavel {
                 return false;
             }
         }
+        
+        if(t.getNascimento()==null){
+            return false;
+        }
+        
         return usuarios.add(t);
     }
 
@@ -53,6 +58,11 @@ public class UsuarioDao implements Dao<Usuario>, Validavel {
     public boolean update(Usuario t) {
         for(int i=0; i<usuarios.size(); i++){
             if(usuarios.get(i).getEmail().equals(t.getEmail())){
+                
+                if(t.getNascimento()==null){
+                    return false;
+                }
+                
                 usuarios.set(i, t);
                 return true;
             }
