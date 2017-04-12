@@ -1,9 +1,17 @@
 package com.ifpb.agenda.entidades;
 
+import com.ifpb.agenda.dao.ConverteData;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Essa classe contém dados referentes aos compromissos e seus respectivos métodos
+ * @author ricarte
+ */
 public class Compromisso {
    
     private LocalDate data;
@@ -11,8 +19,26 @@ public class Compromisso {
     private String descricao;
     private String local;
     
-    public Compromisso (LocalDate data, LocalTime hora, String descricao, String local){
-        this.data = data;
+    /**
+     * Contrutor de Compromisso
+     * @param data A data do compromisso
+     * @param hora A hora do compromisso
+     * @param descricao A descrição do compromisso
+     * @param local O local do compromisso
+     */
+    public Compromisso (String data, LocalTime hora, String descricao, String local){
+        SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
+        formater.setLenient(false);
+        try {
+            Date dataComp = formater.parse(data);
+            if(LocalDate.now().isBefore(ConverteData.toLocalDate(dataComp))){
+                this.data = ConverteData.toLocalDate(formater.parse(data));
+            }else{
+                System.out.println("Data Inválida");
+            }
+        } catch (ParseException ex) {
+            ex.getMessage();
+        }
         this.hora = hora;
         this.descricao = descricao;
         this.local = local;
@@ -22,8 +48,19 @@ public class Compromisso {
         return data;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setData(String data) {
+        SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
+        formater.setLenient(false);
+        try {
+            Date dataComp = formater.parse(data);
+            if(LocalDate.now().isBefore(ConverteData.toLocalDate(dataComp))){
+                this.data = ConverteData.toLocalDate(formater.parse(data));
+            }else{
+                System.out.println("Data Inválida");
+            }
+        } catch (ParseException ex) {
+            ex.getMessage();
+        }
     }
 
     public LocalTime getHora() {

@@ -14,7 +14,7 @@ import java.time.LocalTime;
 
 /**
  *
- * @author ricar
+ * @author ricarte
  */
 public class App {
 
@@ -25,15 +25,15 @@ public class App {
         //usuario
         UsuarioDao user = new UsuarioDao();
         
-        user.create(new Usuario("Ana", LocalDate.now(), 'F', "123@gmail.com", "123"));
-        user.create(new Usuario("Thiago", LocalDate.now(), 'M', "thigoyure@gmail.com", "pera"));
+        user.create(new Usuario("Ana","02/02/1990", 'F', "123@gmail.com", "123"));
+        user.create(new Usuario("Thiago","03/03/1991", 'M', "thigoyure@gmail.com", "pera"));
         
         System.out.println(user.read("thigoyure@gmail.com"));
         System.out.println(user.listar());
-        user.delete(new Usuario ("Thiago", LocalDate.now(), 'M', "thigoyure@gmail.com", "pera"));
+        user.delete(new Usuario ("Thiago","03/03/1991", 'M', "thigoyure@gmail.com", "pera"));
         System.out.println(user.listar());
         
-        user.update(new Usuario("Rafael", LocalDate.now(), 'M', "123@gmail.com", "123"));
+        user.update(new Usuario("Rafael","04/04/1992", 'M', "123@gmail.com", "123"));
         System.out.println(user.listar());
         
         //agendas
@@ -41,7 +41,7 @@ public class App {
         user.listar().get(0).create(new Agenda("Pessoal"));
         
         //compromisso
-        user.listar().get(0).listar().get(0).create(new Compromisso(LocalDate.now(), LocalTime.now(), "aniversario", "igreja"));
+        user.listar().get(0).listar().get(0).create(new Compromisso("05/05/2017", LocalTime.now(), "aniversario", "igreja"));
         
         System.out.println(user.listar().get(0).listar());
     }

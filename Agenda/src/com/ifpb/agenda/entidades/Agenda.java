@@ -7,14 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Essa classe contém dados referentes as agendas
+ * @author ricarte
+ */
 public class Agenda implements CompromissoDao{
     private String nome;
     private List<Compromisso> compromissos;
-    
-    public Agenda(){
-        
-    }
-    
+   
+    /**
+     * Construtor da agenda
+     * @param nome O nome da agenda
+     */
     public Agenda(String nome){
         this.nome = nome;
         compromissos = new ArrayList<>();        
@@ -62,6 +66,11 @@ public class Agenda implements CompromissoDao{
         return true;
     }
 
+    /**
+     * Cria um compromisso para o usuário
+     * @param c O compromisso que será criado
+     * @return A confirmação do conteúdo criado
+     */
     @Override
     public boolean create(Compromisso c) {
         for(int i=0; i<compromissos.size(); i++){
@@ -72,11 +81,21 @@ public class Agenda implements CompromissoDao{
         return compromissos.add(c);
     }
 
+    /**
+     * Deleta um compromisso do usuário
+     * @param c O compromisso que será deletado
+     * @return A confirmação da exclusão do compromisso
+     */
     @Override
     public boolean delete(Compromisso c) {
         return compromissos.remove(c);
     }
 
+    /**
+     * Atualiza um compromisso do usuário
+     * @param c O compromisso novo que substituirá o antigo
+     * @return A confirmação da atualização do compromisso
+     */
     @Override
     public boolean update(Compromisso c) {
         for(int i=0; i<compromissos.size(); i++){
@@ -88,6 +107,12 @@ public class Agenda implements CompromissoDao{
         return false;
     }
 
+    /**
+     * Ler os dados de um compromisso
+     * @param data A data do compromisso
+     * @param hora A hora do compromisso
+     * @return Os dados do compromisso selecionado
+     */
     @Override
     public Compromisso read(LocalDate data, LocalTime hora) {
         for(int i=0; i<compromissos.size(); i++){
@@ -98,6 +123,10 @@ public class Agenda implements CompromissoDao{
         return null;
     }
     
+    /**
+     * Lista os compromissos de uma agenda
+     * @return Os compromissos presentes na agenda
+     */
     public List<Compromisso> listar(){
         return compromissos;
     }
